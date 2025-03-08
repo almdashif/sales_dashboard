@@ -10,12 +10,11 @@ import { IOrders } from "@/types/ordersTypes";
 const processOrders = (data: IOrders[]) => {
     const monthlyData: { [key: string]: { name: string; sales: number; profit: number } } = {};
 
-
-    const categories: { [key: string]: number } = {};
+    const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     data.forEach((order) => {
         const date = new Date(order.date ?? "");
-        const month = date.toLocaleString("en-US", { month: "short" }); 
+        const month = monthOrder[date.getMonth()];
 
         if (!monthlyData[month]) {
             monthlyData[month] = { name: month, sales: 0, profit: 0 };
@@ -25,8 +24,9 @@ const processOrders = (data: IOrders[]) => {
         monthlyData[month].profit += order.profit || (order.totalAmount ?? 0 * 0.2); 
     });
 
-    return Object.values(monthlyData);
+    return Object.values(monthlyData).sort((a, b) => monthOrder.indexOf(a.name) - monthOrder.indexOf(b.name));
 };
+
 
 export default function Charts({ categoryName, data=orders }: { data?: IOrders[], categoryName: string }) {
     const salesData = useMemo(() => processOrders(data), [data]);

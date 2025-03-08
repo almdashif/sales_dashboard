@@ -3,7 +3,8 @@ import Charts from "@/components/Charts";
 import SalesTable from "@/components/SalesTable";
 import { useParams } from "next/navigation";
 import orders from "@/data/orders.json";
-
+import Link from "next/link";
+import { MdOutlineLogout } from "react-icons/md";
 const salesOrder = orders.filter(val => val.Order_Status.toLowerCase() == 'delivered')
 
 export default function DynamicPage() {
@@ -12,7 +13,11 @@ export default function DynamicPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold capitalize pb-4">{section} Dashboard</h1>
+      <div className="flex flex-row justify-between items-center py-4">
+        <h1 className="text-2xl font-bold capitalize pb-4">{section} Dashboard</h1>
+        <Link href="/" className='bg-gray-700 py-2 px-4 rounded text-white'><MdOutlineLogout /></Link>
+      </div>
+
 
 
       {section == 'products' ?
@@ -23,7 +28,7 @@ export default function DynamicPage() {
         :
         <>
           <Charts data={salesOrder} categoryName="Most Sold Category" />
-          <SalesTable  />
+          <SalesTable />
         </>
       }
     </div>
