@@ -51,7 +51,7 @@ export default function OrderTable({ section }: { section?: string }) {
                                 {section === "products" ? (
                                     <>
                                         <th className="border px-2 py-2">Product ID</th>
-                                        <th className="border px-2 py-2">Item Name</th>
+                                        <th className="border px-2 py-2">Product Name</th>
                                         <th className="border px-2 py-2">Price</th>
                                         <th className="border px-2 py-2">Stock Quantity</th>
                                     </>
@@ -60,7 +60,7 @@ export default function OrderTable({ section }: { section?: string }) {
                                         <th className="border px-2 py-2">Order ID</th>
                                         <th className="border px-2 py-2">Customer</th>
                                         <th className="border px-2 py-2 hidden md:table-cell">Phone</th>
-                                        <th className="border px-2 py-2">Items</th>
+                                        <th className="border px-2 py-2">Products</th>
                                         <th className="border px-2 py-2 hidden md:table-cell">Order Type</th>
                                         <th className="border px-2 py-2">Status</th>
                                         <th className="border px-2 py-2">Total Amount</th>
