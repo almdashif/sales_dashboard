@@ -1,13 +1,22 @@
-import Link from "next/link";
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-const page = () => {
-  return (
-    <div className="h-screen w-screen flex justify-center items-center">
-      <Link href="/dashboard/sales" className='bg-gray-700 py-4 px-8 rounded text-white'>Go to Admin Dashboard</Link>
-    </div>
-  )
-}
+const Page = () => {
+   const router = useRouter();
+  
+    useEffect(() => {
+      router.prefetch("/dashboard/sales");
+      router.replace("/dashboard/sales");
+    }, []);
+    return (
+      <div className="p-6 space-y-6 max-h-screen overflow-y-auto relative">
+  
+        Loading ...
+  
+      </div>
+  
+    );
+};
 
-export default page;
-
-
+export default Page;
