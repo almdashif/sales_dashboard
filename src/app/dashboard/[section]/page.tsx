@@ -15,7 +15,7 @@ export default function DynamicPage() {
     <div>
       <div className="flex flex-row justify-between items-center py-4">
         <h1 className="text-2xl font-bold capitalize pb-4">{section} Dashboard</h1>
-        <Link href="/" className='bg-gray-700 py-2 px-4 rounded text-white'><MdOutlineLogout /></Link>
+        {/* <Link href="/" className='bg-gray-700 py-2 px-4 rounded text-white'><MdOutlineLogout /></Link> */}
       </div>
 
 
