@@ -1,24 +1,22 @@
-"use client";
-import { useRouter } from "next/navigation";
+'use client'
 
-const Page = () => {
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Page() {
+
   const router = useRouter();
 
-  const handleNavigation = async() => {
-    console.log('first')
-    await router.replace("/dashboard/sales"); // Avoids history stacking, making it faster
-  };
-
+  useEffect(() => {
+    router.prefetch("/dashboard/sales");
+    router.replace("/dashboard/sales");
+  }, []);
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
-      <button
-        onClick={handleNavigation}
-        className="bg-gray-700 py-4 px-8 rounded text-white cursor-pointer"
-      >
-        Go to Admin Dashboard
-      </button>
-    </div>
-  );
-};
+    <div className="p-6 space-y-6 max-h-screen overflow-y-auto relative">
 
-export default Page;
+      Loading ...
+
+    </div>
+
+  );
+}
